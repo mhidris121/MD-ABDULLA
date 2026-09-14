@@ -93,14 +93,35 @@ function BettaFish() {
 }
 
 export default function FishCanvas() {
+  // স্ক্রিন সাইজ অনুযায়ী FOV এর স্টেট (ডিফল্ট ৮)
+  const [fov, setFov] = React.useState(8);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      // স্ক্রিনের সাইজ ৭৬৮ পিক্সেলের কম হলে (মোবাইল/ট্যাবলেট) FOV ১৫ হবে, অন্যথায় ৮
+      if (window.innerWidth < 768) {
+        setFov(15);
+      } else {
+        setFov(8);
+      }
+    };
+
+    // প্রথমবার পেজ লোড হলে চেক করবে
+    handleResize();
+
+    // ব্রাউজার রিসাইজ করলে রেসপন্সিভলি চেঞ্জ হবে
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none">
-      <Canvas camera={{ position: [20, 0, 20], fov: 8 }} dpr={[1, 2]}>
+      {/* fov প্রপসে ডায়নামিক fov স্টেট বসানো হয়েছে */}
+      <Canvas camera={{ position: [20, 0, 20], fov: fov }} dpr={[1, 2]}>
         <ambientLight intensity={1.5} />
         <directionalLight position={[10, 10, 5]} intensity={2.5} color="#00ffff" />
         <pointLight position={[-10, -10, -5]} intensity={1.5} color="#ff007f" />
         
-        {/* Float ইফেক্ট দিয়ে মাছকে একই জায়গায় হালকা সাঁতার কাটার মতো ভাসমান রাখা হয়েছে */}
         <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5} position={[0, -0.5, 0]}>
           <group scale={[0.5, 0.5, 0.5]}> 
             <BettaFish />

@@ -127,7 +127,7 @@ export default function App() {
       <FishCanvas mousePosition={mousePosition} />
 
       <nav className="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md bg-black/40 border-b border-white/10">
-        <h1 className="text-xl font-bold tracking-wider text-cyan-400">MD ABDULLAH</h1>
+      <h1 className="text-xl font-bold tracking-wider text-cyan-400">MD ABDULLAH</h1>
         
         <div className="hidden md:flex gap-6 text-sm font-medium text-gray-300">
           <a href="#about" className="hover:text-cyan-400 transition">{content.nav.about}</a>
@@ -151,13 +151,13 @@ export default function App() {
           <span className="text-cyan-400 font-semibold tracking-wide uppercase text-xs md:text-sm flex items-center gap-2 mb-2">
             <Waves className="w-4 h-4" /> {content.hero.tag}
           </span>
-          <h1 className="text-4xl md:text-6xl font-black mb-4 leading-tight">
+         <h1 className="text-4xl md:text-6xl font-black mb-4 leading-tight bg-gradient-to-r from-white via-cyan-200 to-cyan-500 bg-clip-text text-transparent drop-shadow-sm">
             {content.hero.title}
           </h1>
-          <p className="text-lg md:text-xl text-cyan-200/90 mb-4 font-light">
+         <p className="text-slate-300 font-normal leading-relaxed text-sm md:text-base">
             {content.hero.subtitle}
           </p>
-          <p className="text-gray-400 text-sm md:text-base mb-8 leading-relaxed">
+          <p className="text-slate-300 font-normal leading-relaxed text-sm md:text-base">
             {content.hero.desc}
           </p>
           
@@ -175,7 +175,7 @@ export default function App() {
           {content.stats.map((st, i) => (
             <div key={i} className="glass p-4 rounded-2xl text-center">
               <h3 className="text-2xl md:text-3xl font-extrabold text-cyan-400">{st.val}</h3>
-              <p className="text-xs text-gray-400 mt-1">{st.label}</p>
+              <p className="text-slate-300 font-normal leading-relaxed text-sm md:text-base">{st.label}</p>
             </div>
           ))}
         </div>
@@ -184,7 +184,9 @@ export default function App() {
       <section id="about" className="py-20 px-6 max-w-6xl mx-auto">
         <div className="glass p-8 md:p-12 rounded-3xl">
           <span className="text-cyan-400 text-xs font-bold uppercase tracking-wider">{content.about.tag}</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">{content.about.title}</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold mt-2 mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+        {content.about.title}
+      </h2>
           <div className="grid md:grid-cols-2 gap-6 text-gray-300 leading-relaxed text-sm md:text-base">
             <p>{content.about.p1}</p>
             <p>{content.about.p2}</p>
@@ -200,7 +202,7 @@ export default function App() {
             <div key={idx} className="glass p-6 rounded-2xl hover:border-cyan-500/50 transition">
               <span className="text-xs px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full">{sp.type}</span>
               <h3 className="text-xl font-bold mt-4 mb-2">{sp.name}</h3>
-              <p className="text-gray-400 text-sm">{sp.desc}</p>
+              <p className="text-slate-300 font-normal leading-relaxed text-sm md:text-base">{sp.desc}</p>
             </div>
           ))}
         </div>
@@ -214,7 +216,7 @@ export default function App() {
             <div key={idx} className="glass p-6 rounded-2xl">
               <Sparkles className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-lg font-bold mb-2">{srv.title}</h3>
-              <p className="text-gray-400 text-sm">{srv.desc}</p>
+              <p className="text-slate-300 font-normal leading-relaxed text-sm md:text-base">{srv.desc}</p>
             </div>
           ))}
         </div>
